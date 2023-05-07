@@ -1,9 +1,15 @@
 variable "aws_region" {
-  type        = string
+  type = string
 }
 
 variable "aws_account_id" {
-  type        = string
+  type = string
 }
 
-variable "vpc_cidr_block" {}
+variable "vpc_cidr_block" {
+  type = string
+}
+
+variable "key_pair_name" {
+  type = string
+}
