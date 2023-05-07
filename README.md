@@ -1,4 +1,4 @@
-# Complete VPC
+# Basic VPC
 
 Configuration in this directory creates set of VPC resources which may be sufficient for staging or production environment (look into [vpc](./vpc) for more info or structure used).
 
