@@ -21,6 +21,19 @@ resource "aws_instance" "ec2" {
   subnet_id = var.ec2_subnet_id
   vpc_security_group_ids = [var.aws_security_group]
   associate_public_ip_address = var.associate_public_ip_address
+  // WIP add private key for like bastion instance
+	# provisioner "file" {
+  #   source      = file("./${var.key_pair_name}.pem")
+  #   destination = "/tmp/${var.key_pair_name}.pem"
+
+	# 	connection {
+  #   	type        = "ssh"
+  #   	host        = self.public_ip
+  #   	user        = "ubuntu"
+  #   	private_key = file("./${var.key_pair_name}.pem")
+  #   	timeout     = "4m"
+  #   }
+  # }
 
   tags = {
     Name = "ec2-instance"
