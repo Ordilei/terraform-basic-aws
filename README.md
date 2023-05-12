@@ -4,6 +4,10 @@ Configuration in this directory creates set of VPC resources which may be suffic
 
 There are public, private, subnets, and NAT Gateways created in each availability zone.
 
+### Create env.tfvars
+
+Before to execute terraform move `env.tfvars.sample` to `env.tfvars`
+
 ## Usage
 
 To run this example you need to execute:
@@ -45,3 +49,24 @@ Create em env.tfvars for execute this recipe, this contains key value.
 | <a name="aws_region"></a> [aws\_region](#aws\_region) | Define region AWS |
 
 
+For Connection instance execute this commands in output terraform 
+
+Connecttion in public ec2
+
+```bash
+$ ssh -i <KEY_PAIR>.pem ubuntu@<PUBLIC IP>
+```
+
+Connecttion in private ec2
+
+Berofe executre tunnel in public-ec2/bastion
+
+```bash
+$ ssh -L 8080:<PRIVATE-IP-DESTINY-INSTANCE>:22 -i <KEY_PAIR>.pem ubuntu@<PUBLIC-IP-BASTIONS>
+```
+
+After Tunnel OK execute ssh
+
+```bash
+$ ssh -i <KEY_PAIR>.pem -p 8080 ubuntu@127.0.0.1
+```

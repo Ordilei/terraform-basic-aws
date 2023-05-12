@@ -43,3 +43,18 @@ module "instance-pvt" {
   associate_public_ip_address = false
   key_pair_name               = var.key_pair_name
 }
+
+output "ssh-public" {
+  value       = "ssh -i instance-test.pem ubuntu@${module.instance-pub.ec2_public_ip[0]}"
+  description = "Get ssh in instance public"
+}
+
+output "ssh-tunnel" {
+  value       = "ssh -L 8080:${module.instance-pvt.ec2_private_ip[0]}:22 -i instance-test.pem ubuntu@${module.instance-pub.ec2_public_ip[0]}"
+  description = "Get Tunnel with host bastion"
+}
+
+output "ssh-private" {
+  value       = "ssh -i instance-test.pem ubuntu@127.0.0.1 -p 8080"
+  description = "Get ssh in private instance"
+}
